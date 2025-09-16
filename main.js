@@ -19,7 +19,7 @@ const recipe2 = {
   ratings: [4, 5, 5, 5],
   averageRating: null,
 };
-     
+
 const recipe3 = {
   name: 'Vegetable Stir Fry',
   ingredients: ['broccoli', 'carrot', 'bell pepper'],
@@ -32,25 +32,48 @@ const recipe3 = {
 
 recipes.push(recipe1, recipe2, recipe3);
 
-function getAverageRating (arr) {
-  let averageRating = 0;
-  let sum = 0;
-   for (let i = 0; i < arr.ratings.length; i++) 
-     {
-       sum += arr.ratings[i]
-     }
+function getAverageRating(ratings) {
+  const total = ratings[0] + ratings[1] + ratings[2] + ratings[3];
+  return total / ratings.length;
+}
 
-  return  sum / arr.ratings.length;
-};
+function getTotalIngredients(ingredients) {
+  return ingredients.length;
+}
 
-let num1 = (getAverageRating (recipe1));
-console.log(num1);
-console.log(typeof(num1));
+function getDifficultyLevel(cookingTime) {
+  if (cookingTime <= 30) {
+    return 'easy';
+  } else if (cookingTime <= 60) {
+    return 'medium';
+  } else {
+    return 'hard';
+  }
+}
 
-let num2 = (getAverageRating (recipe2));
-console.log(num2);
-console.log(typeof(num2));
+const recipe1AverageRating = getAverageRating(recipe1.ratings);
+console.log(recipe1AverageRating);
 
-let num3 = (getAverageRating (recipe3));
-console.log(num3);
-console.log(typeof(num3));
+const recipe1TotalIngredients = getTotalIngredients(recipe1.ingredients);
+console.log(recipe1TotalIngredients);
+
+const recipe1DifficultyLevel = getDifficultyLevel(recipe1.cookingTime);
+console.log(recipe1DifficultyLevel);
+
+recipe1.averageRating = getAverageRating(recipe1.ratings);
+recipe1.totalIngredients = getTotalIngredients(recipe1.ingredients);
+recipe1.difficultyLevel = getDifficultyLevel(recipe1.cookingTime);
+
+recipe2.averageRating = getAverageRating(recipe2.ratings);
+recipe2.totalIngredients = getTotalIngredients(recipe2.ingredients);
+recipe2.difficultyLevel = getDifficultyLevel(recipe2.cookingTime);
+
+recipe3.averageRating = getAverageRating(recipe3.ratings);
+recipe3.totalIngredients = getTotalIngredients(recipe3.ingredients);
+recipe3.difficultyLevel = getDifficultyLevel(recipe3.cookingTime);
+
+recipe3.averageRating = getAverageRating(recipe3.ratings);
+recipe3.totalIngredients = getTotalIngredients(recipe3.ingredients);
+recipe3.difficultyLevel = getDifficultyLevel(recipe3.cookingTime);
+
+console.log(recipes);
